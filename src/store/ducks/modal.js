@@ -11,7 +11,6 @@ const INITIAL_STATE = {
 export default function tools(state = INITIAL_STATE, action) {
   switch (action.type) {
     case Types.OPEN_MODAL:
-      console.log(state.modalIsOpen);
       return { ...state, modalIsOpen: true, data: action.payload.data };
     case Types.CLOSE_MODAL:
       return INITIAL_STATE;

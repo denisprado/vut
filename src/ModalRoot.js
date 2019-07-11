@@ -10,7 +10,7 @@ const MODAL_COMPONENTS = {
   /* other modals */
 };
 
-const ModalRoot = ({ modalType, modalProps }) => {
+const ModalRoot = ({ modalType, modalProps, modalIsOpen }) => {
   if (!modalType) {
     return null;
   }
@@ -20,7 +20,7 @@ const ModalRoot = ({ modalType, modalProps }) => {
 };
 
 const mapStateToProps = state => ({
-  modal: state.modal,
+  modalIsOpen: state.modalIsOpen,
 });
 
 export default connect(

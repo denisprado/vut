@@ -6,8 +6,11 @@ import { Creators as ToolsActions } from '../../store/ducks/tools';
 import { Creators as ModalActions } from '../../store/ducks/modal';
 
 import DeleteToolModal from '../../components/DeleteToolModal';
+import AddToolModal from '../../components/AddToolModal';
 
-import { Container, Search, Tools, List, Item, Tags, Tag } from './styles';
+import {
+  Container, Search, Tools, List, Item, Tags, Tag,
+} from './styles';
 
 import Loading from '../../components/Loading';
 
@@ -17,15 +20,22 @@ class Home extends Component {
     getToolsRequest();
   }
 
-  openDeleteModal = id => {
+  openDeleteModal(id) {
     const { openModal } = this.props;
-    openModal({ modalType: 'DELETE_TOOL' });
-  };
+    openModal({ modalType: 'DELETE_TOOL', id });
+  }
+
+  openAddModal() {
+    const { openModal } = this.props;
+    openModal({ modalType: 'ADD_TOOL', modalIsOpen: true });
+  }
 
   render() {
     const { tools, loading } = this.props;
     return (
       <Container>
+        <DeleteToolModal />
+        <AddToolModal />
         <h1>VUTTR</h1>
         <h2>Very Usefull Tools do Remember</h2>
         <Tools>
@@ -45,20 +55,25 @@ class Home extends Component {
                   </a>
                 </h2>
                 <p>{tool.description}</p>
-                <button type="button" onClick={this.openDeleteModal}>
+                <button type="button" onClick={() => this.openDeleteModal(tool.id)}>
                   Delete
                 </button>
-                <DeleteToolModal />
+                <button type="button" onClick={() => this.openAddModal()}>
+                  Add
+                </button>
                 <Tags>
-                  {tool.tags.map((tag, index) => (
-                    <Tag key={index}>#{tag}</Tag>
+                  {tool.tags.map(tag => (
+                    <Tag key={tag}>
+                      #
+                      {tag}
+                    </Tag>
                   ))}
                 </Tags>
               </Item>
             ))
           ) : (
-            <Loading />
-          )}
+              <Loading />
+            )}
         </List>
       </Container>
     );
@@ -67,10 +82,16 @@ class Home extends Component {
 const mapStateToProps = state => ({
   loading: state.loading,
   tools: state.tools,
+  modalIsOpen: state.modalIsOpen,
 });
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators({ ...ToolsActions, ...ModalActions }, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators(
+  {
+    ...ToolsActions,
+    ...ModalActions,
+  },
+  dispatch,
+);
 
 export default connect(
   mapStateToProps,
