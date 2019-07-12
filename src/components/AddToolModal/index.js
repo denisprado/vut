@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import ReactModal from 'react-modal';
+import Modal from 'react-modal';
 import { Creators as ModalActions } from '../../store/ducks/modal';
 import { Creators as ToolsActions } from '../../store/ducks/tools';
 
@@ -16,11 +16,11 @@ const customStyles = {
   },
 };
 
-ReactModal.setAppElement('#root');
+Modal.setAppElement('#root');
 
-const AddToolModal = ({ modalIsOpen, closeModal }) => (
+const AddToolModal = ({ modalType, closeModal, modal }) => (
   <div>
-    <ReactModal style={customStyles} isOpen={modalIsOpen} onRequestClose={() => closeModal}>
+    <Modal style={customStyles} isOpen={modal.modalIsOpen} onRequestClose={() => closeModal}>
       <p>Add tool?</p>
       <button
         type="button"
@@ -33,12 +33,12 @@ const AddToolModal = ({ modalIsOpen, closeModal }) => (
       <button type="button" onClick={() => closeModal()}>
         Nope
       </button>
-    </ReactModal>
+    </Modal>
   </div>
 );
 
 const mapStateToProps = state => ({
-  modalIsOpen: state.modalIsOpen,
+  modal: state.modal,
 });
 const mapDispatchToProps = dispatch => bindActionCreators(
   {

@@ -8,7 +8,7 @@ const INITIAL_STATE = {
   modalIsOpen: false,
 };
 
-export default function tools(state = INITIAL_STATE, action) {
+export default function modal(state = INITIAL_STATE, action) {
   switch (action.type) {
     case Types.OPEN_MODAL:
       return { ...state, modalIsOpen: true, data: action.payload.data };
