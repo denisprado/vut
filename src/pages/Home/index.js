@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import '../../config/reactotron';
 import { Creators as ToolsActions } from '../../store/ducks/tools';
 import { Creators as ModalActions } from '../../store/ducks/modal';
-
-import DeleteToolModal from '../../components/DeleteToolModal';
-import AddToolModal from '../../components/AddToolModal';
 
 import {
   Container, Search, Tools, List, Item, Tags, Tag,
@@ -22,20 +20,28 @@ class Home extends Component {
 
   openDeleteModal(id) {
     const { openModal } = this.props;
-    openModal({ modalType: 'DELETE_TOOL', id });
+    openModal({
+      modalType: 'DELETE_TOOL',
+      modalProps: id,
+      open: true,
+      closeModal: this.closeModal,
+    });
   }
 
   openAddModal() {
     const { openModal } = this.props;
-    openModal({ modalType: 'ADD_TOOL', modalIsOpen: true });
+    openModal({
+      modalType: 'ADD_TOOL',
+      open: true,
+      closeModal: this.closeModal,
+    });
   }
 
   render() {
     const { tools, loading } = this.props;
     return (
       <Container>
-        <DeleteToolModal />
-        <AddToolModal />
+
         <h1>VUTTR</h1>
         <h2>Very Usefull Tools do Remember</h2>
         <Tools>
@@ -44,6 +50,7 @@ class Home extends Component {
             <input type="checkbox" name="search-check" value="false" />
             Search in tags only
           </Search>
+          <button type="button" onClick={() => this.openAddModal()}>Add</button>
         </Tools>
         <List>
           {!loading ? (
@@ -57,9 +64,6 @@ class Home extends Component {
                 <p>{tool.description}</p>
                 <button type="button" onClick={() => this.openDeleteModal(tool.id)}>
                   Delete
-                </button>
-                <button type="button" onClick={() => this.openAddModal()}>
-                  Add
                 </button>
                 <Tags>
                   {tool.tags.map(tag => (
@@ -79,10 +83,18 @@ class Home extends Component {
     );
   }
 }
+
+Home.propTypes = {
+  getToolsRequest: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+  openModal: PropTypes.func.isRequired,
+  tools: PropTypes.string.isRequired,
+};
+
+
 const mapStateToProps = state => ({
   loading: state.loading,
   tools: state.tools,
-  modalIsOpen: state.modalIsOpen,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(

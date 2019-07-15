@@ -14,11 +14,20 @@ export function* getTools() {
   }
 }
 
-export function* deleteTools() {
+export function* deleteTools(action) {
   try {
-    const response = yield call(api.delete, '/tools/:id');
-    yield put(ToolsActions.getToolsSuccess(response.data));
+    const response = yield call(api.delete, `/tools/${action.payload.data}`);
+    yield put(ToolsActions.deleteToolsSuccess(response.data));
   } catch (err) {
     yield put(ErrorActions.setError('Não foi possível deletar as ferramentas'));
+  }
+}
+
+export function* addTools(action) {
+  try {
+    const response = yield call(api.post, '/tools', action.payload.data);
+    yield put(ToolsActions.addToolsSuccess(response.data));
+  } catch (err) {
+    yield put(ErrorActions.setError('Não foi possível adicionar as ferramentas'));
   }
 }

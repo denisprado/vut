@@ -2,6 +2,9 @@ export const Types = {
   GET_REQUEST: 'tools/GET_REQUEST',
   GET_SUCCESS: 'tools/GET_SUCCESS',
   DELETE_REQUEST: 'tools/DELETE_REQUEST',
+  DELETE_SUCCESS: 'tools/DELETE_SUCCESS',
+  ADD_REQUEST: 'tools/ADD_REQUEST',
+  ADD_SUCCESS: 'tools/ADD_SUCCESS',
 };
 
 const INITIAL_STATE = {
@@ -13,9 +16,15 @@ export default function tools(state = INITIAL_STATE, action) {
   switch (action.type) {
     case Types.GET_REQUEST:
       return { ...state, loading: true };
-    case Types.DELETE_REQUEST:
-      return { ...state, loading: true };
     case Types.GET_SUCCESS:
+      return { ...state, loading: false, data: action.payload.data };
+    case Types.DELETE_REQUEST:
+      return { ...state, loading: true, data: action.payload.data };
+    case Types.DELETE_SUCCESS:
+      return { ...state, loading: false, data: action.payload.data };
+    case Types.ADD_REQUEST:
+      return { ...state, loading: true, data: action.payload.data };
+    case Types.ADD_SUCCESS:
       return { ...state, loading: false, data: action.payload.data };
     default:
       return state;
@@ -23,10 +32,27 @@ export default function tools(state = INITIAL_STATE, action) {
 }
 
 export const Creators = {
-  getToolsRequest: () => ({ type: Types.GET_REQUEST }),
-  deleteToolsRequest: id => ({ type: Types.DELETE_REQUEST, payload: { id } }),
+  addToolsRequest: data => ({
+    type: Types.ADD_REQUEST,
+    payload: { data },
+  }),
+  addToolsSuccess: data => ({
+    type: Types.ADD_SUCCESS,
+    payload: { data },
+  }),
+  getToolsRequest: () => ({
+    type: Types.GET_REQUEST,
+  }),
   getToolsSuccess: data => ({
     type: Types.GET_SUCCESS,
+    payload: { data },
+  }),
+  deleteToolsRequest: data => ({
+    type: Types.DELETE_REQUEST,
+    payload: { data },
+  }),
+  deleteToolsSuccess: data => ({
+    type: Types.DELETE_REQUEST,
     payload: { data },
   }),
 };
