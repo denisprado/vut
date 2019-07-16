@@ -10,51 +10,94 @@ import {
   Container, Search, Tools, List, Item, Tags, Tag,
 } from './styles';
 
-import Loading from '../../components/Loading';
+const mapStateToProps = state => ({
+  loading: state.loading,
+  tools: state.tools,
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators(
+  {
+    ...ToolsActions,
+    ...ModalActions,
+  },
+  dispatch,
+);
+
 
 class Home extends Component {
+  state = {
+    query: '',
+    onlyTagSearch: false,
+  };
+
   componentDidMount() {
+    this.getTools();
+  }
+
+  getTools() {
     const { getToolsRequest } = this.props;
-    getToolsRequest();
+    const { query, onlyTagSearch } = this.state;
+    const queryParameter = onlyTagSearch ? 'tags_like=' : 'q=';
+    getToolsRequest(query, queryParameter);
   }
 
   openDeleteModal(id) {
-    const { openModal } = this.props;
+    const { openModal, closeModal } = this.props;
     openModal({
       modalType: 'DELETE_TOOL',
       modalProps: id,
       open: true,
-      closeModal: this.closeModal,
+      closeModal,
     });
   }
 
   openAddModal() {
-    const { openModal } = this.props;
+    const { openModal, closeModal } = this.props;
     openModal({
       modalType: 'ADD_TOOL',
       open: true,
-      closeModal: this.closeModal,
+      closeModal,
     });
   }
 
+  shouldComponentRender() {
+    const { loading, tools } = this.props;
+    if (loading === false) return false;
+    if (!tools) return false;
+    return true;
+  }
+
   render() {
-    const { tools, loading } = this.props;
+    const { tools } = this.props;
+    const { query, onlyTagSearch } = this.state;
+    if (!this.shouldComponentRender()) return 'Loading...';
     return (
       <Container>
-
         <h1>VUTTR</h1>
         <h2>Very Usefull Tools do Remember</h2>
         <Tools>
           <Search>
-            <input type="text" name="search" placeholder="search" />
-            <input type="checkbox" name="search-check" value="false" />
-            Search in tags only
+            <input
+              type="text"
+              placeholder="Search"
+              value={query}
+              onChange={event => this.setState({ query: event.target.value })}
+            />
+            <input
+              type="checkbox"
+              name="checkTags"
+              defaultChecked={onlyTagSearch}
+              onClick={() => {
+                this.setState({ onlyTagSearch: !onlyTagSearch });
+                this.setState({ query: '' });
+              }}
+            />
           </Search>
           <button type="button" onClick={() => this.openAddModal()}>Add</button>
         </Tools>
         <List>
-          {!loading ? (
-            tools.data.map(tool => (
+          {
+            tools && tools.data.map(tool => (
               <Item key={tool.id}>
                 <h2>
                   <a href={tool.link} target="_blank" rel="noopener noreferrer">
@@ -75,9 +118,7 @@ class Home extends Component {
                 </Tags>
               </Item>
             ))
-          ) : (
-              <Loading />
-            )}
+          }
         </List>
       </Container>
     );
@@ -88,22 +129,9 @@ Home.propTypes = {
   getToolsRequest: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
   openModal: PropTypes.func.isRequired,
+  closeModal: PropTypes.func.isRequired,
   tools: PropTypes.string.isRequired,
 };
-
-
-const mapStateToProps = state => ({
-  loading: state.loading,
-  tools: state.tools,
-});
-
-const mapDispatchToProps = dispatch => bindActionCreators(
-  {
-    ...ToolsActions,
-    ...ModalActions,
-  },
-  dispatch,
-);
 
 export default connect(
   mapStateToProps,

@@ -1,6 +1,7 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import propTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { Creators as ToolsActions } from '../../store/ducks/tools';
 import { Creators as ModalActions } from '../../store/ducks/modal';
@@ -8,18 +9,31 @@ import '../../config/reactotron';
 // import { Container } from './styles';
 
 class DeleteToolModal extends Component {
+
+  handleDeleteTool() {
+    const {
+      deleteToolsRequest, modalProps,
+    } = this.props;
+    deleteToolsRequest(modalProps);
+  }
+
+
   render() {
     const {
-      deleteToolsRequest, closeModal,
+      closeModal, modalProps,
     } = this.props;
 
     return (
       <div>
-        <p>Delete tool id {this.props.modalProps}?</p>
+        <p>
+          Delete tool id
+          {modalProps}
+          ?
+        </p>
         <button
           type="button"
           onClick={
-            () => deleteToolsRequest(this.props.modalProps)
+            () => this.handleDeleteTool()
           }
         >
           Yes
@@ -29,6 +43,12 @@ class DeleteToolModal extends Component {
     );
   }
 }
+
+DeleteToolModal.propTypes = {
+  closeModal: propTypes.func.isRequired,
+  deleteToolsRequest: propTypes.func.isRequired,
+  modalProps: propTypes.number.isRequired,
+};
 
 
 const mapDispatchToProps = dispatch => bindActionCreators(

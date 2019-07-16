@@ -19,13 +19,13 @@ export default function tools(state = INITIAL_STATE, action) {
     case Types.GET_SUCCESS:
       return { ...state, loading: false, data: action.payload.data };
     case Types.DELETE_REQUEST:
-      return { ...state, loading: true, data: action.payload.data };
+      return { ...state, loading: true };
     case Types.DELETE_SUCCESS:
-      return { ...state, loading: false, data: action.payload.data };
+      return { ...state, loading: false };
     case Types.ADD_REQUEST:
-      return { ...state, loading: true, data: action.payload.data };
+      return { ...state, loading: true };
     case Types.ADD_SUCCESS:
-      return { ...state, loading: false, data: action.payload.data };
+      return { ...state, loading: false };
     default:
       return state;
   }
@@ -36,12 +36,12 @@ export const Creators = {
     type: Types.ADD_REQUEST,
     payload: { data },
   }),
-  addToolsSuccess: data => ({
+  addToolsSuccess: () => ({
     type: Types.ADD_SUCCESS,
-    payload: { data },
   }),
-  getToolsRequest: () => ({
+  getToolsRequest: (query, queryParameter) => ({
     type: Types.GET_REQUEST,
+    payload: { query, queryParameter },
   }),
   getToolsSuccess: data => ({
     type: Types.GET_SUCCESS,
@@ -51,8 +51,7 @@ export const Creators = {
     type: Types.DELETE_REQUEST,
     payload: { data },
   }),
-  deleteToolsSuccess: data => ({
+  deleteToolsSuccess: () => ({
     type: Types.DELETE_REQUEST,
-    payload: { data },
   }),
 };

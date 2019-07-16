@@ -5,6 +5,7 @@ import Modal from 'react-modal';
 import DeleteToolModal from './components/DeleteToolModal';
 import AddToolModal from './components/AddToolModal';
 
+Modal.setAppElement('#root');
 
 const MODAL_COMPONENTS = {
   DELETE_TOOL: DeleteToolModal,
