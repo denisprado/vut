@@ -6,23 +6,21 @@ import '../../config/reactotron';
 import { Creators as ToolsActions } from '../../store/ducks/tools';
 import { Creators as ModalActions } from '../../store/ducks/modal';
 
-import {
-  Container, Search, Tools, List, Item, Tags, Tag,
-} from './styles';
+import { Container, Search, Tools, List, Item, Tags, Tag } from './styles';
 
 const mapStateToProps = state => ({
   loading: state.loading,
   tools: state.tools,
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators(
-  {
-    ...ToolsActions,
-    ...ModalActions,
-  },
-  dispatch,
-);
-
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      ...ToolsActions,
+      ...ModalActions,
+    },
+    dispatch,
+  );
 
 class Home extends Component {
   state = {
@@ -31,6 +29,12 @@ class Home extends Component {
   };
 
   componentDidMount() {
+    this.getTools();
+  }
+
+  handleQuery(e) {
+    e.preventDefault();
+    this.setState({ query: e.target.value });
     this.getTools();
   }
 
@@ -81,7 +85,7 @@ class Home extends Component {
               type="text"
               placeholder="Search"
               value={query}
-              onChange={event => this.setState({ query: event.target.value })}
+              onChange={event => this.handleQuery(event)}
             />
             <input
               type="checkbox"
@@ -92,12 +96,15 @@ class Home extends Component {
                 this.setState({ query: '' });
               }}
             />
+            search in tags only
           </Search>
-          <button type="button" onClick={() => this.openAddModal()}>Add</button>
+          <button type="button" onClick={() => this.openAddModal()}>
+            Add
+          </button>
         </Tools>
         <List>
-          {
-            tools && tools.data.map(tool => (
+          {tools &&
+            tools.data.map(tool => (
               <Item key={tool.id}>
                 <h2>
                   <a href={tool.link} target="_blank" rel="noopener noreferrer">
@@ -110,15 +117,11 @@ class Home extends Component {
                 </button>
                 <Tags>
                   {tool.tags.map(tag => (
-                    <Tag key={tag}>
-                      #
-                      {tag}
-                    </Tag>
+                    <Tag key={tag}>#{tag}</Tag>
                   ))}
                 </Tags>
               </Item>
-            ))
-          }
+            ))}
         </List>
       </Container>
     );

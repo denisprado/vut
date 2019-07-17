@@ -9,36 +9,31 @@ import '../../config/reactotron';
 // import { Container } from './styles';
 
 class DeleteToolModal extends Component {
-
   handleDeleteTool() {
-    const {
-      deleteToolsRequest, modalProps,
-    } = this.props;
+    const { deleteToolsRequest, modalProps } = this.props;
     deleteToolsRequest(modalProps);
   }
 
-
   render() {
-    const {
-      closeModal, modalProps,
-    } = this.props;
+    const { closeModal, modalProps } = this.props;
 
     return (
       <div>
+        <h2>
+          <i className="fa fa-remove" />
+          Remove Tool?
+        </h2>
         <p>
-          Delete tool id
+          Are you sure you want to remove
           {modalProps}
-          ?
+?
         </p>
-        <button
-          type="button"
-          onClick={
-            () => this.handleDeleteTool()
-          }
-        >
-          Yes
+        <button type="button" onClick={() => closeModal()}>
+          Cancel
         </button>
-        <button type="button" onClick={() => closeModal()}>Nope</button>
+        <button type="button" onClick={() => this.handleDeleteTool()}>
+          Yes, remove
+        </button>
       </div>
     );
   }
@@ -50,12 +45,12 @@ DeleteToolModal.propTypes = {
   modalProps: propTypes.number.isRequired,
 };
 
-
 const mapDispatchToProps = dispatch => bindActionCreators(
   {
     ...ModalActions,
     ...ToolsActions,
-  }, dispatch,
+  },
+  dispatch,
 );
 
 export default connect(

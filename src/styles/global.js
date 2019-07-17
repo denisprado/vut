@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import 'font-awesome/css/font-awesome.css';
 
 const GlobalStyle = createGlobalStyle`
 *{
@@ -21,6 +22,19 @@ const GlobalStyle = createGlobalStyle`
 
   button{
     cursor: pointer;
+    margin: 0 0 20px 0;
+    border: 2px solid #000;
+    padding: 3px 10px;
+    font-size: 14px;
+    background-color:#fff;
+  }
+
+  input, input[type="checkbox" i] {
+    margin: 0 0 20px 0;
+    border: 2px solid #000;
+    padding: 3px 10px;
+    font-size: 14px;
+    background-color:#fff;
   }
 `;
 
