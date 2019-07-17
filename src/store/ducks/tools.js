@@ -39,9 +39,8 @@ export const Creators = {
   addToolsSuccess: () => ({
     type: Types.ADD_SUCCESS,
   }),
-  getToolsRequest: (query, queryParameter) => ({
+  getToolsRequest: () => ({
     type: Types.GET_REQUEST,
-    payload: { query, queryParameter },
   }),
   getToolsSuccess: data => ({
     type: Types.GET_SUCCESS,

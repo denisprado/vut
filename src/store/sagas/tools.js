@@ -1,14 +1,16 @@
 /* eslint-disable import/prefer-default-export */
-import { call, put } from 'redux-saga/effects';
+import { call, put, select } from 'redux-saga/effects';
 import api from '../../services/api';
 
 import { Creators as ErrorActions } from '../ducks/error';
 import { Creators as ToolsActions } from '../ducks/tools';
 import { Creators as ModalActions } from '../ducks/modal';
 
-export function* getTools(action) {
+
+export function* getTools() {
   try {
-    const response = yield call(api.get, `/tools?${action.payload.queryParameter}${action.payload.query}`);
+    const state = yield select();
+    const response = yield call(api.get, `/tools?${state.search.param}${state.search.query.query}`);
     yield put(ToolsActions.getToolsSuccess(response.data));
   } catch (err) {
     yield put(ErrorActions.setError('Não foi possível obter as ferramentas'));

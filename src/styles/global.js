@@ -36,6 +36,10 @@ const GlobalStyle = createGlobalStyle`
     font-size: 14px;
     background-color:#fff;
   }
+
+  i{
+    margin-right: 5px;
+  }
 `;
 
 export default GlobalStyle;
