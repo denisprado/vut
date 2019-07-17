@@ -33,9 +33,6 @@ class AddToolModal extends Component {
           <label htmlFor="tags">Tags: </label>
           <Input name="tags" />
           <button type="submit">Add tool</button>
-          <button type="button" onClick={() => closeModal()}>
-            Cancel
-          </button>
         </Form>
       </Container>
     );

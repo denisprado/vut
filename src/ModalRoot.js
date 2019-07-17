@@ -59,7 +59,12 @@ class ModalRoot extends React.Component {
 
     return (
       <div>
-        <Modal isOpen={modalIsOpen} style={customStyles} closeModal={this.closeModal}>
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={this.closeModal}
+          style={customStyles}
+          closeModal={this.closeModal}
+        >
           <SpecifiedModal {...data} />
         </Modal>
       </div>
