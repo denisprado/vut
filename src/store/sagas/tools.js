@@ -6,11 +6,13 @@ import { Creators as ErrorActions } from '../ducks/error';
 import { Creators as ToolsActions } from '../ducks/tools';
 import { Creators as ModalActions } from '../ducks/modal';
 
-
 export function* getTools() {
   try {
     const state = yield select();
-    const response = yield call(api.get, `/tools?${state.search.param}${state.search.query.query}`);
+
+    const response = state.search.param
+      ? yield call(api.get, `/tools${state.search.param}${state.search.query.query}`)
+      : yield call(api.get, '/tools');
     yield put(ToolsActions.getToolsSuccess(response.data));
   } catch (err) {
     yield put(ErrorActions.setError('Não foi possível obter as ferramentas'));

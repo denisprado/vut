@@ -11,18 +11,24 @@ const INITIAL_STATE = {
 };
 
 export default function search(state = INITIAL_STATE, action) {
-  const initialParam = state.param.length > 0 ? state.param : 'q=';
+  const initialParam = state.param.length > 0 ? state.param : '?q=';
   switch (action.type) {
     case Types.CHANGE_QUERY:
       return { ...state, query: action.payload.query, param: initialParam };
     case Types.ONLY_TAG:
       if (!state.onlyTag) {
         return {
-          ...state, query: '', onlyTag: !state.onlyTag, param: 'tags_like=',
+          ...state,
+          query: '',
+          onlyTag: !state.onlyTag,
+          param: '?tags_like=',
         };
       }
       return {
-        ...state, query: '', onlyTag: !state.onlyTag, param: 'q=',
+        ...state,
+        query: '',
+        onlyTag: !state.onlyTag,
+        param: '?q=',
       };
     case Types.CLEAR_QUERY:
       return INITIAL_STATE;

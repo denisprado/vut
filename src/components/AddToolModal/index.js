@@ -8,8 +8,8 @@ import { Creators as ToolsActions } from '../../store/ducks/tools';
 
 import { Container } from './styles';
 
-function AddToolModal() {
-  function handleSubmit(data, addToolsRequest) {
+const AddToolModal = ({ addToolsRequest }) => {
+  function handleSubmit(data) {
     const toolData = data;
     toolData.tags = data.tags.split(' ');
     addToolsRequest(toolData);
@@ -35,7 +35,7 @@ Add tool?
       </Form>
     </Container>
   );
-}
+};
 
 const mapStateToProps = state => ({
   modal: state.modal,
