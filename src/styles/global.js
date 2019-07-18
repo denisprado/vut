@@ -1,8 +1,9 @@
 import { createGlobalStyle } from 'styled-components';
 import 'font-awesome/css/font-awesome.css';
+import 'typeface-source-sans-pro';
 
 const GlobalStyle = createGlobalStyle`
-*{
+  *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -16,30 +17,80 @@ const GlobalStyle = createGlobalStyle`
   body{
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
-    background-color: #DEDCE1;
-    font-family:Arial, Helvetica, sans-serif;
+    background-color: #FCFCFD;
+    font-family:'Source Sans Pro', Arial, Helvetica, sans-serif;
+    font-size:20px;
+    color: #170C3A;
   }
 
   button{
     cursor: pointer;
+    max-width:250px;
+    min-width:174PX;
+    font-family:'Source Sans Pro', Arial, Helvetica, sans-serif;
+    font-weight:400;
     margin: 0 0 20px 0;
-    border: 2px solid #000;
-    padding: 3px 10px;
-    font-size: 14px;
-    background-color:#fff;
+    padding: 13px 26px;
+    font-size: 18px;
+    border-radius: 5px;
+    background-color: #365DF0;
+    color:#fff;
+    &:hover{
+      background-color: #2F55CC;
+    }
+    &:active{
+      background-color:#244AA8;
+    }
   }
 
-  input, input[type="checkbox" i] {
+
+  input, textarea {
     margin: 0 0 20px 0;
-    border: 2px solid #000;
-    padding: 3px 10px;
+    border: 1px solid #EBEAED;
+    border-radius:5px;
+    padding: 12.5px 12.5px;
     font-size: 14px;
-    background-color:#fff;
+    background-color: #F5F4F6;
+    color: #B1ADB9;
+    font-size: 20px;
+    &:focus{
+      background-color: #EBEAED;
+      color: #170C3A;
+    }
   }
 
   i{
     margin-right: 5px;
   }
+
+  h1, h2, h3{
+    font-weight: 400;
+    margin-bottom:5px;
+  }
+
+  h1{
+    font-size: 42px;
+    line-height: 50px;
+
+  }
+  h2{
+    font-size: 36px;
+    line-height: 40px;
+  }
+  h3{
+    font-size: 30px;
+    line-height: 36px;
+    a{
+      text-decoration: none;
+      color: #000;
+    }
+  }
+  /* Checkbox configuration */
+
+  input[type=checkbox] {
+    margin:10px;
+  }
+
 `;
 
 export default GlobalStyle;

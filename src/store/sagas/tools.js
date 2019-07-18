@@ -21,12 +21,12 @@ export function* getTools() {
 
 export function* deleteTools(action) {
   try {
-    yield call(api.delete, `/tools/${action.payload.data}`);
+    yield call(api.delete, `/tools/${action.payload.data.id}`);
     yield put(ModalActions.closeModal());
     yield put(ToolsActions.getToolsRequest());
     yield put(ToolsActions.deleteToolsSuccess());
   } catch (err) {
-    yield put(ErrorActions.setError('Não foi possível deletar as ferramentas'));
+    yield put(ErrorActions.setError('Não foi possível deletar a ferramenta'));
   }
 }
 

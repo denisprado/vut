@@ -9241,6 +9241,11 @@ source-map@^0.6.0, source-map@^0.6.1, source-map@~0.6.0, source-map@~0.6.1:
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
   integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
 
+source-sans-pro@^2.45.0:
+  version "2.45.0"
+  resolved "https://registry.yarnpkg.com/source-sans-pro/-/source-sans-pro-2.45.0.tgz#1c013c404dfa48ed18ceaf3e904be21b5a0a124e"
+  integrity sha512-MBbmgyzlD0yCKAvJ4Q86s9BB8yXYld26joJh0DMD53j9aFJZYnFo/B7f4RKXDUfX9I4FyEfdr51lOaVioAOBHw==
+
 spdx-correct@^3.0.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/spdx-correct/-/spdx-correct-3.1.0.tgz#fb83e504445268f154b074e218c87c003cd31df4"
@@ -9886,6 +9891,11 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
+
+typeface-source-sans-pro@^0.0.75:
+  version "0.0.75"
+  resolved "https://registry.yarnpkg.com/typeface-source-sans-pro/-/typeface-source-sans-pro-0.0.75.tgz#33e60ea079738c2dbdb2d0aa28f899f565e1646e"
+  integrity sha512-8aI6ywe+5py1MoMQjdnuQKepOATSLpFoyatVMweF6JNUD8cu+sWaVEfZBN08CRxPrSC4KYTArf6prrQzcqpyQA==
 
 typescript-compare@^0.0.2:
   version "0.0.2"

@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  h2 {
-    margin-bottom: 30px;
-  }
+
   form {
     display: flex;
     flex-direction: column;
@@ -13,14 +11,7 @@ export const Container = styled.div`
     label {
       margin: 0px 0px 10px 0px;
     }
-    input,
-    textarea,
-    button {
-      margin: 0 0 20px 0;
-      border: 2px solid #000;
-      padding: 10px;
-      font-size: 14px;
-    }
+
   }
 `;
 

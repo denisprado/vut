@@ -6,14 +6,16 @@ import { bindActionCreators } from 'redux';
 import '../../config/reactotron';
 import _ from 'lodash';
 import { Creators as ModalActions } from '../../store/ducks/modal';
-import { Item, Tags, Header } from './styles';
+import {
+  Item, Tags, Tag, Header, RemoveButton,
+} from './styles';
 
 class ToolsRow extends Component {
-  openDeleteModal(id) {
+  openDeleteModal(id, title) {
     const { openModal, closeModal } = this.props;
     openModal({
       modalType: 'DELETE_TOOL',
-      modalProps: id,
+      modalProps: { id, title },
       open: true,
       closeModal,
     });
@@ -27,18 +29,24 @@ class ToolsRow extends Component {
     return (
       <Item key={id}>
         <Header>
-          <button type="button" onClick={() => this.openDeleteModal(id)}>
+          <RemoveButton type="button" onClick={() => this.openDeleteModal(id, title)}>
             <i className="fa fa-remove" />
             remove
-          </button>
-          <h2>
+          </RemoveButton>
+          <h3>
             <a href={link} target="_blank" rel="noopener noreferrer">
               {title}
             </a>
-          </h2>
+          </h3>
         </Header>
         <p>{description}</p>
-        <Tags />
+        <Tags>
+          {tags.map(tag => (
+            <Tag key={uuidv4()}>
+              #{tag}
+            </Tag>
+          ))}
+        </Tags>
       </Item>
     );
   }

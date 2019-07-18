@@ -25,7 +25,7 @@ class DeleteToolModal extends Component {
         </h2>
         <p>
           Are you sure you want to remove
-          {modalProps}
+          <b> {modalProps.title}</b>
           ?
         </p>
         <button type="button" onClick={() => closeModal()}>

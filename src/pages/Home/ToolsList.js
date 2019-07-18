@@ -9,7 +9,7 @@ import { Creators as ToolsActions } from '../../store/ducks/tools';
 import { Creators as ModalActions } from '../../store/ducks/modal';
 import { Creators as SearchActions } from '../../store/ducks/search';
 import {
-  Container, Search, MenuBar, List,
+  Container, Search, MenuBar, List, HeaderTitle,
 } from './styles';
 import ToolsRow from './ToolsRow';
 
@@ -34,11 +34,13 @@ class ToolList extends Component {
     const {
       ToolListData, query, onlyTag, toggleOnlyTag,
     } = this.props;
-    console.log(ToolListData);
+
     return (
       <Container>
-        <h1>VUTTR</h1>
-        <h2>Very Usefull Tools do Remember</h2>
+        <HeaderTitle>
+          <h1>VUTTR</h1>
+          <h2>Very Usefull Tools to Remember</h2>
+        </HeaderTitle>
         <MenuBar>
           <Search>
             <input
@@ -55,7 +57,10 @@ class ToolList extends Component {
             />
             search in tags only
           </Search>
-          <button type="button" onClick={() => this.openAddModal()}>
+          <button
+            type="button"
+
+            onClick={() => this.openAddModal()}>
             <i className="fa fa-plus" />
             Add
           </button>

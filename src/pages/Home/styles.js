@@ -1,10 +1,15 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  margin: 0 auto;
+  margin: 30px auto;
   max-width: 1080px;
   padding: 30px 0 0;
 `;
+
+export const HeaderTitle = styled.div`
+  padding: 0 15px;
+`;
+
 export const Header = styled.div`
   display: flex;
   flex-direction: row-reverse;
@@ -14,22 +19,27 @@ export const Header = styled.div`
     border: 0px;
   }
 `;
-export const Search = styled.form``;
+export const Search = styled.form`
+  `;
+
 export const MenuBar = styled.div`
+
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  margin-top: 30px;
+  margin-top: 60px;
 `;
 export const List = styled.ul`
+
   list-style: none;
   padding: 10px 0;
 `;
 export const Item = styled.li`
   padding: 15px;
-  border: 1px solid #000;
-  background-color: #fff;
-  margin: 10px 0px;
+  border-radius:10px;
+  border:1px solid #EBEAED;
+  margin: 0 0 30px 0px;
+  box-shadow: 10px 10px 10px 0px rgba(0,0,0, 0.05);
 `;
 export const Tags = styled.ul`
   margin-top: 10px;
@@ -40,4 +50,19 @@ export const Tags = styled.ul`
 `;
 export const Tag = styled.li`
   margin: 0 10px 0 0;
+  font-weight:bold;
+`;
+
+export const RemoveButton = styled.button`
+  background-color: transparent;
+  margin:0;
+  padding:5px;
+  border: 0px;
+  min-width:50px;
+  color: #F95E5A;
+  font-size: 18px;
+  &:hover,&:active{
+    color: #F95E5A;
+    background-color: transparent;
+  }
 `;
