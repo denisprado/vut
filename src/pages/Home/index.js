@@ -9,7 +9,7 @@ import { Creators as ModalActions } from '../../store/ducks/modal';
 import { Creators as SearchActions } from '../../store/ducks/search';
 
 import {
-  Container, Search, Tools, List, Item, Tags, Tag, Header,
+  Container, Search, MenuBar, List, Item, Tags, Tag, Header,
 } from './styles';
 
 const mapStateToProps = state => ({
@@ -73,14 +73,14 @@ class Home extends Component {
 
   render() {
     const {
-      tools, query, onlyTag, toggleOnlyTag
+      tools, query, onlyTag, toggleOnlyTag,
     } = this.props;
-    if (!this.shouldComponentRender()) return <i className="fa fa-spinner fa-spin" />;
+    if (!this.shouldComponentRender()) return <i className="fa fa-spinner fa-pulse" />;
     return (
       <Container>
         <h1>VUTTR</h1>
         <h2>Very Usefull Tools do Remember</h2>
-        <Tools>
+        <MenuBar>
           <Search>
             <input
               type="text"
@@ -100,7 +100,7 @@ class Home extends Component {
             <i className="fa fa-plus" />
             Add
           </button>
-        </Tools>
+        </MenuBar>
         <List>
           {tools
             && tools.data.map(tool => (
@@ -141,10 +141,14 @@ class Home extends Component {
 }
 
 Home.propTypes = {
+  changeQuery: PropTypes.func.isRequired,
+  closeModal: PropTypes.func.isRequired,
   getToolsRequest: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
+  onlyTag: PropTypes.bool.isRequired,
   openModal: PropTypes.func.isRequired,
-  closeModal: PropTypes.func.isRequired,
+  query: PropTypes.string.isRequired,
+  toggleOnlyTag: PropTypes.func.isRequired,
   tools: PropTypes.string.isRequired,
 };
 

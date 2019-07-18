@@ -74,10 +74,8 @@ class ModalRoot extends React.Component {
 
 ModalRoot.propTypes = {
   data: propTypes.shape({
-    title: propTypes.string,
-    description: propTypes.string,
-    tags: propTypes.string,
-    modalType: propTypes.string,
+    open: propTypes.bool.isRequired,
+    modalType: propTypes.string.isRequired,
   }).isRequired,
 };
 
