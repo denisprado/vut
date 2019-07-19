@@ -16,7 +16,7 @@ export const Container = styled.div`
       display: flex;
       flex-direction: column;
       flex-grow: 1;
-      min-width: 500px;
+      min-width: 600px;
       label {
         margin: 0px 0px 10px 0px;
       }
