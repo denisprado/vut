@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Form, Input } from '@rocketseat/unform';
+import PropTypes from 'prop-types';
 import plusIcon from '../../assets/images/Icon-Add-Square-2px.svg';
 import { Creators as ModalActions } from '../../store/ducks/modal';
 import { Creators as ToolsActions } from '../../store/ducks/tools';
@@ -36,6 +37,10 @@ const AddToolModal = ({ addToolsRequest }) => {
       </Form>
     </Container>
   );
+};
+
+AddToolModal.propTypes = {
+  addToolsRequest: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
