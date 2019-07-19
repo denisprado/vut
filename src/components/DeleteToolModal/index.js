@@ -10,6 +10,9 @@ import '../../config/reactotron';
 
 import { Container, RemoveButton, CancelButton } from './styles';
 
+/**
+ * Delete tool component, to be opened as confirm dialog modal.
+ */
 class DeleteToolModal extends Component {
   handleDeleteTool() {
     const { deleteToolsRequest, modalProps } = this.props;
@@ -31,7 +34,7 @@ class DeleteToolModal extends Component {
             {' '}
             {modalProps.title}
           </b>
-?
+          ?
         </p>
         <CancelButton onClick={() => closeModal()}>Cancel</CancelButton>
         <RemoveButton type="button" onClick={() => this.handleDeleteTool()}>

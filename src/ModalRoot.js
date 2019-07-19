@@ -28,6 +28,9 @@ const mapStateToProps = state => ({
   ...state.modal,
 });
 
+/**
+ * Component Container to open specific modals (delete or add tools)
+ */
 class ModalRoot extends React.Component {
   static propTypes = {
     data: PropTypes.arrayOf({

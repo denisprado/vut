@@ -6,6 +6,9 @@ import '../../config/reactotron';
 import { Creators as ToolsActions } from '../../store/ducks/tools';
 import ToolsList from './ToolsList';
 
+/**
+ * Component container to render and send data to the component ToolsList
+ */
 class ToolsListContainer extends Component {
   componentDidMount() {
     const { getToolsRequest } = this.props;
@@ -13,9 +16,8 @@ class ToolsListContainer extends Component {
   }
 
   shouldComponentRender() {
-    const { loading, tools } = this.props;
-    if (loading === false) return false;
-    if (!tools) return false;
+    const { loading } = this.props;
+    if (loading === false) return true;
     return true;
   }
 
@@ -27,9 +29,14 @@ class ToolsListContainer extends Component {
   }
 }
 
+ToolsListContainer.defaultProps = {
+  loading: false,
+};
+
 ToolsListContainer.propTypes = {
   getToolsRequest: PropTypes.func.isRequired,
   tools: PropTypes.shape().isRequired,
+  loading: PropTypes.bool,
 };
 
 const mapStateToProps = state => ({

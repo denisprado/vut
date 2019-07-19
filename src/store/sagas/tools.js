@@ -6,6 +6,9 @@ import { Creators as ErrorActions } from '../ducks/error';
 import { Creators as ToolsActions } from '../ducks/tools';
 import { Creators as ModalActions } from '../ducks/modal';
 
+/**
+ * Saga to get tools from api, filtering if necessary
+ */
 export function* getTools() {
   try {
     const state = yield select();
@@ -19,6 +22,10 @@ export function* getTools() {
   }
 }
 
+/**
+ * Saga to delete a tool from api
+ * @param {object} action
+ */
 export function* deleteTools(action) {
   try {
     yield call(api.delete, `/tools/${action.payload.data.id}`);
@@ -30,6 +37,10 @@ export function* deleteTools(action) {
   }
 }
 
+/**
+ * Saga to add a tool in the api.
+ * @param {object} action
+ */
 export function* addTools(action) {
   try {
     yield call(api.post, '/tools', action.payload.data);

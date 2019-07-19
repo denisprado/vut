@@ -12,6 +12,9 @@ import {
 } from './styles';
 import ToolsRow from './ToolsRow';
 
+/**
+ * Component to display, search, add and delete the usefull tools.
+ */
 class ToolList extends Component {
   handleQuery(e) {
     const { value } = e.target;

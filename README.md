@@ -2,7 +2,7 @@
 
 ## Very Usefull Tools to Remember
 
-This useful tool registry application is the challenge required by [Bossa Box](http://bossabox.com) to integrate your ProLancers teams.
+This useful tools manager application is the challenge required by [Bossa Box](http://bossabox.com) to integrate your ProLancers teams.
 
 ### `npm start`
 

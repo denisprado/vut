@@ -19,6 +19,11 @@ const schema = Yup.object().shape({
   tags: Yup.string().required('A tag is required'),
 });
 
+/**
+ * Add tool form, to be opened as modal.
+ * @param {object*} param0
+ */
+
 const AddToolModal = ({ addToolsRequest }) => {
   function handleSubmit(data) {
     const toolData = data;

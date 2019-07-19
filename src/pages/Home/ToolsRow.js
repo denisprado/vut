@@ -10,6 +10,9 @@ import {
   Item, Tags, Tag, Header, RemoveButton,
 } from './styles';
 
+/**
+ * Component container to render rows from component ToolsList
+ */
 class ToolsRow extends Component {
   openDeleteModal(id, title) {
     const { openModal, closeModal } = this.props;
@@ -43,7 +46,7 @@ class ToolsRow extends Component {
         <Tags>
           {tags.map(tag => (
             <Tag key={uuidv4()}>
-#
+              #
               {tag}
             </Tag>
           ))}
@@ -60,9 +63,7 @@ ToolsRow.propTypes = {
 };
 
 const mapDispatchToProps = dispatch => bindActionCreators(
-  {
-    ...ModalActions,
-  },
+  ModalActions,
   dispatch,
 );
 
