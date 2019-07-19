@@ -22,10 +22,15 @@ class ToolsListContainer extends Component {
   render() {
     const { tools } = this.props;
 
-    if (!this.shouldComponentRender()) return <i className="fa fa-spinner fa-pulse" />;
+    if (!this.shouldComponentRender()) return 'Loading...';
     return <ToolsList ToolListData={tools} />;
   }
 }
+
+ToolsListContainer.propTypes = {
+  getToolsRequest: PropTypes.func.isRequired,
+  tools: PropTypes.shape().isRequired,
+};
 
 const mapStateToProps = state => ({
   loading: state.loading,

@@ -3,10 +3,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
+import removeIcon from '../../assets/images/Icon-Close-2px.svg';
 import { Creators as ToolsActions } from '../../store/ducks/tools';
 import { Creators as ModalActions } from '../../store/ducks/modal';
 import '../../config/reactotron';
-// import { Container } from './styles';
+
+import { Container, RemoveButton, CancelButton } from './styles';
 
 class DeleteToolModal extends Component {
   handleDeleteTool() {
@@ -18,23 +20,24 @@ class DeleteToolModal extends Component {
     const { closeModal, modalProps } = this.props;
 
     return (
-      <div>
-        <h2>
-          <i className="fa fa-remove" />
-          Remove Tool?
-        </h2>
+      <Container>
+        <div className="headerModal">
+          <img src={removeIcon} alt="Add Tool" height="20px" />
+          <h2>Remove Tool?</h2>
+        </div>
         <p>
           Are you sure you want to remove
-          <b> {modalProps.title}</b>
-          ?
+          <b>
+            {' '}
+            {modalProps.title}
+          </b>
+?
         </p>
-        <button type="button" onClick={() => closeModal()}>
-          Cancel
-        </button>
-        <button type="button" onClick={() => this.handleDeleteTool()}>
+        <CancelButton onClick={() => closeModal()}>Cancel</CancelButton>
+        <RemoveButton type="button" onClick={() => this.handleDeleteTool()}>
           Yes, remove
-        </button>
-      </div>
+        </RemoveButton>
+      </Container>
     );
   }
 }

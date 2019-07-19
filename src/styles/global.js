@@ -24,13 +24,15 @@ const GlobalStyle = createGlobalStyle`
   }
 
   button{
+    border:none;
     cursor: pointer;
     max-width:250px;
     min-width:174PX;
     font-family:'Source Sans Pro', Arial, Helvetica, sans-serif;
-    font-weight:400;
-    margin: 0 0 20px 0;
-    padding: 13px 26px;
+    line-height:24px;
+    font-weight:600;
+    margin: 5px;
+    padding: 10px 26px;
     font-size: 18px;
     border-radius: 5px;
     background-color: #365DF0;
@@ -89,6 +91,15 @@ const GlobalStyle = createGlobalStyle`
 
   input[type=checkbox] {
     margin:10px;
+  }
+
+  .headerModal{
+    display:flex;
+    align-items: center;
+    img{
+      margin-right: 15px;
+    }
+
   }
 
 `;

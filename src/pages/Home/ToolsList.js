@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import uuidv4 from 'uuid/v4';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
@@ -57,10 +56,7 @@ class ToolList extends Component {
             />
             search in tags only
           </Search>
-          <button
-            type="button"
-
-            onClick={() => this.openAddModal()}>
+          <button type="button" onClick={() => this.openAddModal()}>
             <i className="fa fa-plus" />
             Add
           </button>
@@ -75,6 +71,18 @@ class ToolList extends Component {
     );
   }
 }
+
+ToolList.propTypes = {
+  ToolListData: PropTypes.shape().isRequired,
+  changeQuery: PropTypes.func.isRequired,
+  closeModal: PropTypes.func.isRequired,
+  getToolsRequest: PropTypes.func.isRequired,
+  onlyTag: PropTypes.bool.isRequired,
+  openModal: PropTypes.func.isRequired,
+  query: PropTypes.string.isRequired,
+  toggleOnlyTag: PropTypes.func.isRequired,
+};
+
 const mapStateToProps = state => ({
   loading: state.loading,
   query: state.query,

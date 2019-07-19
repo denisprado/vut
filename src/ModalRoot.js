@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 import DeleteToolModal from './components/DeleteToolModal';
 import AddToolModal from './components/AddToolModal';
 
 Modal.setAppElement('#root');
-Modal.defaultStyles.overlay.backgroundColor = 'rgba(199, 196, 205, .75)';
+Modal.defaultStyles.overlay.backgroundColor = 'rgba(23, 12, 58, 0.9)';
 
 const MODAL_COMPONENTS = {
   DELETE_TOOL: DeleteToolModal,
@@ -29,6 +29,12 @@ const mapStateToProps = state => ({
 });
 
 class ModalRoot extends React.Component {
+  static propTypes = {
+    data: PropTypes.arrayOf({
+      modalType: PropTypes.shape().isRequired,
+    }).isRequired,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -71,13 +77,6 @@ class ModalRoot extends React.Component {
     );
   }
 }
-
-ModalRoot.propTypes = {
-  data: propTypes.shape({
-    open: propTypes.bool.isRequired,
-    modalType: propTypes.string.isRequired,
-  }).isRequired,
-};
 
 export default connect(
   mapStateToProps,

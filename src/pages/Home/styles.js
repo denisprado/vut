@@ -19,27 +19,24 @@ export const Header = styled.div`
     border: 0px;
   }
 `;
-export const Search = styled.form`
-  `;
+export const Search = styled.form``;
 
 export const MenuBar = styled.div`
-
   display: flex;
   justify-content: space-between;
   flex-direction: row;
   margin-top: 60px;
 `;
 export const List = styled.ul`
-
   list-style: none;
   padding: 10px 0;
 `;
 export const Item = styled.li`
   padding: 15px;
-  border-radius:10px;
-  border:1px solid #EBEAED;
+  border-radius: 10px;
+  border: 1px solid #ebeaed;
   margin: 0 0 30px 0px;
-  box-shadow: 10px 10px 10px 0px rgba(0,0,0, 0.05);
+  box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.05);
 `;
 export const Tags = styled.ul`
   margin-top: 10px;
@@ -50,19 +47,20 @@ export const Tags = styled.ul`
 `;
 export const Tag = styled.li`
   margin: 0 10px 0 0;
-  font-weight:bold;
+  font-weight: bold;
 `;
 
 export const RemoveButton = styled.button`
   background-color: transparent;
-  margin:0;
-  padding:5px;
+  margin: 0;
+  padding: 5px;
   border: 0px;
-  min-width:50px;
-  color: #F95E5A;
+  min-width: 50px;
+  color: #f95e5a;
   font-size: 18px;
-  &:hover,&:active{
-    color: #F95E5A;
+  &:hover,
+  &:active {
+    color: #f95e5a;
     background-color: transparent;
   }
 `;

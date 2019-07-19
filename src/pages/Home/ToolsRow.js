@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import uuidv4 from 'uuid/v4';
+
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import '../../config/reactotron';
-import _ from 'lodash';
 import { Creators as ModalActions } from '../../store/ducks/modal';
 import {
   Item, Tags, Tag, Header, RemoveButton,
@@ -43,7 +43,8 @@ class ToolsRow extends Component {
         <Tags>
           {tags.map(tag => (
             <Tag key={uuidv4()}>
-              #{tag}
+#
+              {tag}
             </Tag>
           ))}
         </Tags>
@@ -51,6 +52,12 @@ class ToolsRow extends Component {
     );
   }
 }
+
+ToolsRow.propTypes = {
+  closeModal: PropTypes.func.isRequired,
+  openModal: PropTypes.func.isRequired,
+  tool: PropTypes.shape().isRequired,
+};
 
 const mapDispatchToProps = dispatch => bindActionCreators(
   {
