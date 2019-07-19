@@ -45,9 +45,15 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
+  label{
+    padding-top:20px;
+  }
+
+  span{
+    color: #F95E5A;
+  }
 
   input, textarea {
-    margin: 0 0 20px 0;
     border: 1px solid #EBEAED;
     border-radius:5px;
     padding: 12.5px 12.5px;

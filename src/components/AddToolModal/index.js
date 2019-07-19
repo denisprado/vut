@@ -3,11 +3,21 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Form, Input } from '@rocketseat/unform';
 import PropTypes from 'prop-types';
+import * as Yup from 'yup';
 import plusIcon from '../../assets/images/Icon-Add-Square-2px.svg';
 import { Creators as ModalActions } from '../../store/ducks/modal';
 import { Creators as ToolsActions } from '../../store/ducks/tools';
 
 import { Container, AddButton } from './styles';
+
+const schema = Yup.object().shape({
+  title: Yup.string().required('Title is required'),
+  link: Yup.string()
+    .url('The field needs to be filled with a valid url')
+    .required('Link is required'),
+  description: Yup.string().required('A description is required'),
+  tags: Yup.string().required('A tag is required'),
+});
 
 const AddToolModal = ({ addToolsRequest }) => {
   function handleSubmit(data) {
@@ -22,7 +32,7 @@ const AddToolModal = ({ addToolsRequest }) => {
         <img src={plusIcon} alt="Add Tool" height="20px" />
         <h2>Add tool?</h2>
       </div>
-      <Form onSubmit={handleSubmit}>
+      <Form schema={schema} onSubmit={handleSubmit}>
         <div>
           <label htmlFor="title">Tool name:</label>
           <Input name="title" type="text" id="title" />

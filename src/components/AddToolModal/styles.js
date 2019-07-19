@@ -25,6 +25,7 @@ export const Container = styled.div`
 `;
 
 export const AddButton = styled.button`
+  margin-top: 30px;
   background-color: #0dcb7d;
   color: #fff;
   &:hover {

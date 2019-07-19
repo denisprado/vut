@@ -22,7 +22,8 @@
     "source-sans-pro": "^2.45.0",
     "styled-components": "^4.3.2",
     "typeface-source-sans-pro": "^0.0.75",
-    "uuid": "^3.3.2"
+    "uuid": "^3.3.2",
+    "yup": "^0.27.0"
   },
   "scripts": {
     "start": "react-scripts start",
